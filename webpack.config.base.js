@@ -1,29 +1,35 @@
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
-  entry: './src/index.jsx',
+  entry: "./src/index.jsx",
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name][hash].js',
+    path: path.join(__dirname, "dist"),
+    filename: "[name][hash].js",
   },
   module: {
     rules: [
       {
         test: /\.js$|jsx/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.css$|scss/,
+      //   use: ["style-loader", "css-loader", "sass-loader"],
+      //   exclude: /node_modules/,
+      // },
       {
-        test: /\.css$|scss/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
         exclude: /node_modules/,
       },
     ],
   },
   plugins: [
-    new htmlWebpackPlugin({
-      template: './src/index.html',
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
     }),
   ],
-  resolve: { extensions: ['.js', '.jsx'] },
+  resolve: { extensions: [".js", ".jsx"] },
 };
