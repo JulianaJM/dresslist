@@ -1,6 +1,4 @@
-import React from 'react';
-
-import './Dresslist.scss';
+import React from "react";
 
 const Dresslist = () => (
   <div className="horizontal-scroll-wrapper squares">
@@ -12,7 +10,7 @@ const Dresslist = () => (
     <div>item 6</div>
     <div>item 7</div>
     <div>item 8</div>
-		<div>item 1</div>
+    <div>item 1</div>
     <div>item 2</div>
     <div>item 3</div>
     <div>item 4</div>

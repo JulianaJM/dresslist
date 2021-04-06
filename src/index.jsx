@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 // polyfill features not available in older browsers (eg promise)
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import App from './App';
-import DefaultErrorBoundary from './DefaultErrorBoundary';
-import './style.css';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import App from "./App";
+import DefaultErrorBoundary from "./DefaultErrorBoundary";
+import "./style.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,5 +13,5 @@ ReactDOM.render(
       <App />
     </DefaultErrorBoundary>
   </React.StrictMode>,
-  document.getElementById('app')
+  document.getElementById("app")
 );

@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
-import Dresslist from './Components/Dresslist/Dresslist';
+import React, { Component } from "react";
+import { hot } from "react-hot-loader";
+import SignUpForm from "./Components/SignUp/SignUpForm";
 
 class App extends Component {
-  state = {
-    count: 0,
-  };
   render() {
-    const { count } = this.state;
     return (
       <>
-        <Dresslist />
+        {/* <LoginForm /> */}
+        <SignUpForm />
+
+        {/* <Dresslist /> */}
       </>
     );
   }

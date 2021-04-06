@@ -70,6 +70,8 @@
         "extensions": [".js", ".jsx"]
       }
     ],
+    "react/state-in-constructor": "off",
+    "react/static-property-placement": "off",
     "radix": 0,
     "no-shadow": "off",
     "prettier/prettier": ["error"],
