@@ -54,21 +54,19 @@ const ErrorLabel = styled.p`
   color: #e01518;
 `;
 
-const InputText = ({ label, type, id, name, value, error, onChange }) => {
-  return (
-    <>
-      <label htmlFor={id} className="sr-only">
+const InputText = ({ label, type, id, name, value, error, onChange }) => (
+  <>
+    <label htmlFor={id} className="sr-only">
+      {label}
+    </label>
+    <InputWrapper>
+      <Input type={type} id={id} name={name} value={value} error={error} onChange={onChange} />
+      <Label htmlFor={id} isMiddle={value}>
         {label}
-      </label>
-      <InputWrapper>
-        <Input type={type} id={id} name={name} value={value} error={error} onChange={onChange} />
-        <Label htmlFor={id} isMiddle={value}>
-          {label}
-        </Label>
-      </InputWrapper>
-      {error && <ErrorLabel>{error}</ErrorLabel>}
-    </>
-  );
-};
+      </Label>
+    </InputWrapper>
+    {error && <ErrorLabel>{error}</ErrorLabel>}
+  </>
+);
 
 export default InputText;

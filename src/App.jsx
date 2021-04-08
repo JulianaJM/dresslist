@@ -1,13 +1,12 @@
 import { hot } from "react-hot-loader/root";
 import React, { Component } from "react";
-import SignUpForm from "./Components/SignUp/SignUpForm";
+import HomePage from "./Pages/Home/Home";
 
 class App extends Component {
   render() {
     return (
       <>
-        {/* <LoginForm /> */}
-        <SignUpForm />
+        <HomePage />
 
         {/* <Dresslist /> */}
       </>

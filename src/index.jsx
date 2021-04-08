@@ -9,9 +9,9 @@ import "./style.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DefaultErrorBoundary>
-      <App />
-    </DefaultErrorBoundary>
+    {/* <DefaultErrorBoundary> */}
+    <App />
+    {/* </DefaultErrorBoundary> */}
   </React.StrictMode>,
   document.getElementById("app")
 );

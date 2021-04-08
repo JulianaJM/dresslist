@@ -14,15 +14,20 @@ module.exports = {
         loader: "babel-loader",
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.css$|scss/,
-      //   use: ["style-loader", "css-loader", "sass-loader"],
-      //   exclude: /node_modules/,
-      // },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|svg|jp(e*)g|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name][hash:8].[ext]",
+            outputPath: "assets/images",
+          },
+        },
       },
     ],
   },

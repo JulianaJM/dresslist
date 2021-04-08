@@ -8,13 +8,14 @@
         "corejs": 3
       }
     ],
-    "@babel/preset-react"
+    ["@babel/preset-react", { "runtime": "automatic", "importSource": "@emotion/react" }]
   ],
   "plugins": [
     "react-hot-loader/babel",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-transform-runtime" // avoid librairie duplication in final bundle
+    "@babel/plugin-transform-runtime", // avoid librairie duplication in final bundle
+    "@emotion/babel-plugin"
   ],
   "env": {
     "test": {

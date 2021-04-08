@@ -21,12 +21,9 @@ const ButtonEl = styled("button")`
   cursor: pointer;
 `;
 
-const Button = ({ type, children, primary }) => {
-  return (
-    <ButtonEl primary={primary} type={type}>
-      {children}
-    </ButtonEl>
-  );
-};
-
+const Button = ({ type, children, primary }) => (
+  <ButtonEl primary={primary} type={type}>
+    {children}
+  </ButtonEl>
+);
 export default Button;
