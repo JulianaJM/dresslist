@@ -119,7 +119,7 @@ const HomePage = () => {
                 display: ["block"],
                 margin: ["0 auto", "5px"],
                 width: ["75%", "50%"],
-                height: ["170px", "auto"],
+                height: ["170px", "50%"],
               })}
             `}
           />
