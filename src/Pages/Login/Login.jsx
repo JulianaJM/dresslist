@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 import LoginForm from "../../Components/Login/LoginForm";
 import SignUpForm from "../../Components/SignUp/SignUpForm";
 import useToggle from "../../Hooks/useToggle";
@@ -63,6 +64,10 @@ const Login = ({ customStyles }) => {
       <WrapperForm>{!isOn ? <LoginForm /> : <SignUpForm />}</WrapperForm>
     </Wrapper>
   );
+};
+
+Login.propTypes = {
+  customStyles: PropTypes.object,
 };
 
 export default Login;

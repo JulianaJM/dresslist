@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const hasCustumStyles = props => props.styles;
 
@@ -29,4 +30,12 @@ const Button = ({ type, children, primary, onClick, customStyles }) => (
     {children}
   </ButtonEl>
 );
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  primary: PropTypes.bool,
+  onClick: PropTypes.func,
+  customStyles: PropTypes.func,
+};
 export default Button;

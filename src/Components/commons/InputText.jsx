@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import PropTypes from "prop-types";
 
 const InputWrapper = styled.div`
   position: relative;
@@ -68,5 +69,15 @@ const InputText = ({ label, type, id, name, value, error, onChange }) => (
     {error && <ErrorLabel>{error}</ErrorLabel>}
   </>
 );
+
+InputText.propTypes = {
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default InputText;
