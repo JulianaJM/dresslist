@@ -6,6 +6,7 @@ module.exports = merge(baseConfig, {
   devServer: {
     // if not defined default port is 8080
     port: 8000,
+    historyApiFallback: true,
   },
   devtool: "source-map",
 });

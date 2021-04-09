@@ -1,8 +1,19 @@
 import React from "react";
+import styled from "@emotion/styled";
 import { useFormik } from "formik";
 import InputText from "../commons/InputText";
 import loginSchema from "./loginSchema";
 import Button from "../commons/Button";
+
+const Form = styled.form`
+  input {
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-top: 70px;
+  }
+`;
 
 const LoginForm = () => {
   const formik = useFormik({
@@ -18,7 +29,7 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <InputText
         label="Email"
         type="email"
@@ -43,7 +54,7 @@ const LoginForm = () => {
       <Button type="submit" primary>
         Sign in
       </Button>
-    </form>
+    </Form>
   );
 };
 

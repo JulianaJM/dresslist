@@ -15,7 +15,8 @@
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-runtime", // avoid librairie duplication in final bundle
-    "@emotion/babel-plugin"
+    "@emotion/babel-plugin",
+    "@babel/plugin-proposal-optional-chaining"
   ],
   "env": {
     "test": {

@@ -1,15 +1,18 @@
 import { hot } from "react-hot-loader/root";
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
 
 class App extends Component {
   render() {
     return (
-      <>
-        <HomePage />
-
-        {/* <Dresslist /> */}
-      </>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </Router>
     );
   }
 }

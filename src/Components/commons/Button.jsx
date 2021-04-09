@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+const hasCustumStyles = props => props.styles;
+
 const ButtonEl = styled("button")`
-  background-color: #fc5b30;
-  background-color: ${props => (props.primary ? "#fc5b30" : "lightgrey")};
+  background-color: #191530;
+  background-color: ${props => (props.primary ? "#191530" : "lightgrey")};
   &:hover {
-    background-color: ${props => (props.primary ? "#f53704" : "grey")};
+    background-color: ${props => (props.primary ? "#191540" : "grey")};
   }
   color: #fff;
   font-size: 15px;
@@ -19,10 +21,11 @@ const ButtonEl = styled("button")`
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
+  ${hasCustumStyles};
 `;
 
-const Button = ({ type, children, primary }) => (
-  <ButtonEl primary={primary} type={type}>
+const Button = ({ type, children, primary, onClick, customStyles }) => (
+  <ButtonEl primary={primary} type={type} onClick={onClick} styles={customStyles}>
     {children}
   </ButtonEl>
 );
