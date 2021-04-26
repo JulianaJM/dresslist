@@ -5,10 +5,13 @@ import PropTypes from "prop-types";
 const hasCustumStyles = props => props.styles;
 
 const ButtonEl = styled("button")`
-  background-color: #191530;
   background-color: ${props => (props.primary ? "#191530" : "lightgrey")};
   &:hover {
     background-color: ${props => (props.primary ? "#191540" : "grey")};
+  }
+  &:disabled {
+    background-color: #cccccc;
+    cursor: initial;
   }
   color: #fff;
   font-size: 15px;
@@ -25,8 +28,14 @@ const ButtonEl = styled("button")`
   ${hasCustumStyles};
 `;
 
-const Button = ({ type, children, primary, onClick, customStyles }) => (
-  <ButtonEl primary={primary} type={type} onClick={onClick} styles={customStyles}>
+const Button = ({ type, children, primary, onClick, disabled, customStyles }) => (
+  <ButtonEl
+    primary={primary}
+    type={type}
+    onClick={onClick}
+    styles={customStyles}
+    disabled={disabled}
+  >
     {children}
   </ButtonEl>
 );
@@ -35,6 +44,7 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   primary: PropTypes.bool,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   customStyles: PropTypes.object,
 };

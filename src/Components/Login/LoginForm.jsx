@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useFormik } from "formik";
-import InputText from "../commons/InputText";
+import PropTypes from "prop-types";
+import InputText from "../common/InputText";
 import loginSchema from "./loginSchema";
-import Button from "../commons/Button";
+import Button from "../common/Button";
 
 const Form = styled.form`
   input {
@@ -15,16 +16,16 @@ const Form = styled.form`
   }
 `;
 
-const LoginForm = () => {
+const LoginForm = ({ onSubmit, isLoading }) => {
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema: loginSchema,
     validateOnChange: false,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      onSubmit({ ...values });
     },
   });
 
@@ -33,12 +34,12 @@ const LoginForm = () => {
       <InputText
         label="Email"
         type="email"
-        id="email"
-        name="email"
-        value={formik.values.email}
+        id="username"
+        name="username"
+        value={formik.values.username}
         onChange={formik.handleChange}
-        error={formik.errors.email}
-        errorLabel={formik.errors.email}
+        error={formik.errors.username}
+        errorLabel={formik.errors.username}
       />
 
       <InputText
@@ -51,11 +52,16 @@ const LoginForm = () => {
         error={formik.errors.password}
       />
 
-      <Button type="submit" primary>
+      <Button type="submit" disabled={isLoading} primary>
         Sign in
       </Button>
     </Form>
   );
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default LoginForm;

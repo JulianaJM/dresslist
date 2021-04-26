@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import styled from "@emotion/styled";
-import InputText from "../commons/InputText";
+import InputText from "../common/InputText";
 import signUpSchema from "./signUpSchema";
-import Button from "../commons/Button";
+import Button from "../common/Button";
 
 const Form = styled.form`
   input {
@@ -15,17 +16,17 @@ const Form = styled.form`
   }
 `;
 
-const SignUpForm = () => {
+const SignUpForm = ({ onSubmit, isLoading }) => {
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
-      confirmPassword: "",
+      confirmedPassword: "",
     },
     validationSchema: signUpSchema,
     validateOnChange: false,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      onSubmit({ ...values });
     },
   });
 
@@ -34,12 +35,12 @@ const SignUpForm = () => {
       <InputText
         label="Email"
         type="email"
-        id="email"
-        name="email"
-        value={formik.values.email}
+        id="username"
+        name="username"
+        value={formik.values.username}
         onChange={formik.handleChange}
-        error={formik.errors.email}
-        errorLabel={formik.errors.email}
+        error={formik.errors.username}
+        errorLabel={formik.errors.username}
       />
 
       <InputText
@@ -55,18 +56,23 @@ const SignUpForm = () => {
       <InputText
         label="Confirm Password"
         type="password"
-        id="confirmPassword"
-        name="confirmPassword"
-        value={formik.values.confirmPassword}
+        id="confirmedPassword"
+        name="confirmedPassword"
+        value={formik.values.confirmedPassword}
         onChange={formik.handleChange}
-        error={formik.errors.confirmPassword}
+        error={formik.errors.confirmedPassword}
       />
 
-      <Button type="submit" primary>
+      <Button type="submit" disabled={isLoading} primary>
         Sign up
       </Button>
     </Form>
   );
+};
+
+SignUpForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default SignUpForm;
