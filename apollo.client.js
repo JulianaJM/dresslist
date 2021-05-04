@@ -1,4 +1,11 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import fetch from "cross-fetch";
+
+const link = new HttpLink({
+  uri: process.env.APOLLO_SERVER_URI,
+  // outgoing requests are captured and deferred until service worker is ready.
+  fetch: (...args) => fetch(...args),
+});
 
 const gqlClient = () => {
   const cache = new InMemoryCache();
@@ -6,7 +13,7 @@ const gqlClient = () => {
   // Initialize ApolloClient
   const client = new ApolloClient({
     cache,
-    uri: process.env.APOLLO_SERVER_URI,
+    link,
     headers: {
       authorization: sessionStorage.getItem("token") || "",
     },

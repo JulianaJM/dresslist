@@ -10,37 +10,37 @@ import {
   RESET_ALERT_MESSAGE,
 } from "./actionTypes";
 
-const setRegisterInProgress = isLoading => ({
+export const setRegisterInProgress = isLoading => ({
   type: REGISTER_LOADING,
   payload: { isLoading },
 });
 
-const setLoginInProgress = isLoading => ({
+export const setLoginInProgress = isLoading => ({
   type: LOGIN_LOADING,
   payload: { isLoading },
 });
 
-const setRegisterSuccess = (user, alert) => ({
+export const setRegisterSuccess = (user, alert) => ({
   type: REGISTER_SUCCESS,
   payload: { user, alert },
 });
 
-const setRegisterFailure = alert => ({
+export const setRegisterFailure = alert => ({
   type: REGISTER_FAILURE,
   payload: { alert },
 });
 
-const setLoginSuccess = (user, alert) => ({
+export const setLoginSuccess = (user, alert) => ({
   type: LOGIN_SUCCESS,
   payload: { user, alert },
 });
 
-const setLoginFailure = alert => ({
+export const setLoginFailure = alert => ({
   type: LOGIN_FAILURE,
   payload: { alert },
 });
 
-const resetAlertMessage = () => ({
+export const resetAlertMessage = () => ({
   type: RESET_ALERT_MESSAGE,
 });
 
@@ -50,7 +50,7 @@ export const register = inputUser => (dispatch, _, { client }) =>
     dispatch(setRegisterInProgress(true));
     dispatch(resetAlertMessage());
 
-    registerUser(client, inputUser)
+    return registerUser(client, inputUser)
       .then(data => {
         const alert = {
           message: "Your account is created, please sign in",
@@ -74,7 +74,7 @@ export const login = inputUser => (dispatch, _, { client }) => {
   dispatch(setLoginInProgress(true));
   dispatch(resetAlertMessage());
 
-  loginUser(client, inputUser)
+  return loginUser(client, inputUser)
     .then(data => {
       dispatch(setLoginSuccess(data));
     })
