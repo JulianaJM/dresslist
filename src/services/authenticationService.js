@@ -12,3 +12,9 @@ export const loginUser = (client, inputUser) =>
 export const logout = () => {
   sessionStorage.removeItem("token");
 };
+
+export const isAuthenticated = () => {
+  const token = sessionStorage.getItem("token");
+
+  return !!token;
+};

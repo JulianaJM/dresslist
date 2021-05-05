@@ -1,8 +1,10 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
+import { graphql } from "msw";
 import * as actions from "./userActions";
 import * as types from "./actionTypes";
 import gqlClient from "../../apollo.client";
+import { server } from "../mocks/server";
 
 const middlewares = [thunk.withExtraArgument({ client: gqlClient() })];
 const mockStore = configureMockStore(middlewares);
@@ -78,7 +80,7 @@ describe("actions", () => {
 });
 
 describe("async actions", () => {
-  it("dispatch multiple action creators when fetching for register a user", () => {
+  it("dispatch SUCCESS when fetching for register a user", () => {
     const expectedActions = [
       {
         type: types.REGISTER_LOADING,
@@ -110,7 +112,7 @@ describe("async actions", () => {
       });
   });
 
-  it("dispatch multiple action creators when fetching for login a user", () => {
+  it("dispatch SUCCESS when fetching for login a user", () => {
     const expectedActions = [
       {
         type: types.LOGIN_LOADING,
@@ -137,5 +139,78 @@ describe("async actions", () => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });
+  });
+
+  it("dispatch FAILURE when fetching login failed", () => {
+    server.use(
+      // override the initial "graphql.mutation("login")" request handler
+      // to return a 500 Server Error
+
+      graphql.mutation("login", (req, res, ctx) => ctx.status(500))
+    );
+    const expectedActions = [
+      {
+        type: types.LOGIN_LOADING,
+        payload: { isLoading: true },
+      },
+      {
+        type: types.RESET_ALERT_MESSAGE,
+      },
+      {
+        type: types.LOGIN_FAILURE,
+        payload: {
+          alert: { message: "An error occured during login please retry ...", type: "error" },
+        },
+      },
+      {
+        type: types.LOGIN_LOADING,
+        payload: { isLoading: false },
+      },
+    ];
+
+    const store = mockStore({ user: {}, message: {} });
+
+    return store.dispatch(actions.login({ username: "toto", password: "toto" })).then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("dispatch FAILURE when fetching for register failed", () => {
+    server.use(
+      // override the initial "graphql.mutation("login")" request handler
+      // to return a 500 Server Error
+
+      graphql.mutation("register", (req, res, ctx) => ctx.status(500))
+    );
+
+    const expectedActions = [
+      {
+        type: types.REGISTER_LOADING,
+        payload: { isLoading: true },
+      },
+      {
+        type: types.RESET_ALERT_MESSAGE,
+      },
+      {
+        type: types.REGISTER_FAILURE,
+        payload: {
+          alert: { message: "An error occured during sign up please retry ...", type: "error" },
+        },
+      },
+      {
+        type: types.REGISTER_LOADING,
+        payload: { isLoading: false },
+      },
+    ];
+
+    const store = mockStore({ user: {}, message: {} });
+
+    return store
+      .dispatch(actions.register({ username: "toto", password: "toto", confirmedPassword: "toto" }))
+      .then(() => {
+        // return of async actions
+        expect(store.getActions()).toEqual(expectedActions);
+      });
   });
 });

@@ -53,7 +53,16 @@ const Span = styled.span`
   padding: 0 5px;
 `;
 
-const Login = ({ register, login, isLoading, customStyles, alert, isCreated, isHomePage }) => {
+const Login = ({
+  register,
+  login,
+  isLoading,
+  customStyles,
+  alert,
+  isCreated,
+  isHomePage,
+  isAuthenticated,
+}) => {
   const [isOn, toggleIsOn] = useToggle();
   const history = useHistory();
 
@@ -65,12 +74,16 @@ const Login = ({ register, login, isLoading, customStyles, alert, isCreated, isH
         history.push("/login");
       }
     }
-  }, [isCreated, isHomePage, toggleIsOn, history]);
+
+    if (isAuthenticated) {
+      history.push("/dressing");
+    }
+  }, [isCreated, isHomePage, isAuthenticated, toggleIsOn, history]);
 
   return (
     <>
       <Wrapper css={customStyles} isRelative={isHomePage}>
-        {alert.message && <AlertMessage type={alert.type} message={alert.message} animate />}
+        {alert?.message && <AlertMessage type={alert.type} message={alert.message} animate />}
         <WrapperButton>
           {!isOn ? <Title>Sign in</Title> : <Title>Sign up</Title>}
           <Span>or</Span>
@@ -94,10 +107,11 @@ Login.propTypes = {
   customStyles: PropTypes.object,
   register: PropTypes.func,
   login: PropTypes.func,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
   alert: PropTypes.object,
   isCreated: PropTypes.bool,
   isHomePage: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default Login;

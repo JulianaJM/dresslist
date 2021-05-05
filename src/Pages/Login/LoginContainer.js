@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { register, login } from "../../actions/userActions";
+import { isAuthenticated } from "../../services/authenticationService";
 import Login from "./Login";
 
 const mapStateToProps = ({ user, alert, router }) => {
@@ -7,6 +8,7 @@ const mapStateToProps = ({ user, alert, router }) => {
   return {
     isLoading: user.isLoading,
     isCreated: user.isCreated,
+    isAuthenticated: isAuthenticated(),
     alert,
     isHomePage,
     history: router.history,
