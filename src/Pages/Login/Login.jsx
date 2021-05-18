@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 import LoginForm from "../../Components/Login/LoginForm";
 import SignUpForm from "../../Components/SignUp/SignUpForm";
 import useToggle from "../../Hooks/useToggle";
-import Button from "../../Components/common/Button";
+import Button from "../../Components/common/Button/Button";
 import { mq } from "../../utils/breakpoints";
-import AlertMessage from "../../Components/common/AlertMessage";
+import AlertMessage from "../../Components/common/AlertMessage/AlertMessage";
 
 const Wrapper = styled("div")`
   position: ${props => (props.isRelative ? "relative" : "initial")};

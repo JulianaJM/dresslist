@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import FocusTrap from "focus-trap-react";
-import { mq } from "../../utils/breakpoints";
+import { mq } from "../../../utils/breakpoints";
 
 const Container = styled("div")`
   @keyframes slideup {
@@ -39,6 +39,7 @@ const ModalWraper = styled("div")`
   border-radius: 5px;
   z-index: 2;
   padding: 5px 15px;
+  overflow-y: scroll;
 `;
 
 const ModalClose = styled.div`

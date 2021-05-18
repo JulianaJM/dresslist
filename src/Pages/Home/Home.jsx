@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import Logo from "../../Components/common/Logo";
+import Logo from "../../Components/common/Logo/Logo";
 import { mq } from "../../utils/breakpoints";
 import closet from "../../assets/images/closet.png";
 import mannequin from "../../assets/images/mannequin.png";
 import smartphoneGirl from "../../assets/images/smartphone-girl.png";
 import photographer from "../../assets/images/photographer.png";
 import Login from "../Login/LoginContainer";
-import Modal from "../../Components/common/Modal";
-import Button from "../../Components/common/Button";
+import Modal from "../../Components/common/Modal/Modal";
+import Button from "../../Components/common/Button/Button";
 import useToggle from "../../Hooks/useToggle";
 
 const Section = styled("section")`

@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import styled from "@emotion/styled";
-import InputText from "../common/InputText";
+import InputText from "../common/InputText/InputText";
 import signUpSchema from "./signUpSchema";
-import Button from "../common/Button";
+import Button from "../common/Button/Button";
 
 const Form = styled.form`
   input {

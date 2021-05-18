@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import Hanger from "../../assets/icons/Hanger";
-import { mq } from "../../utils/breakpoints";
+import Hanger from "../../../assets/icons/Hanger";
+import { mq } from "../../../utils/breakpoints";
 
 const Wrapper = styled.div`
   position: relative;

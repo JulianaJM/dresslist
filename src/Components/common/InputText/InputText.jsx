@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 const InputWrapper = styled.div`
   position: relative;
   width: 100%;
+  font-size: 13px;
+  font-weight: 100;
 `;
 
 const Input = styled("input")`
@@ -23,7 +25,6 @@ const Input = styled("input")`
   outline: none;
   &:focus ~ label {
     top: 15px;
-    font-size: 13px;
     color: #777;
   }
 `;
@@ -32,7 +33,6 @@ const isLabelMiddle = props =>
   props.isMiddle &&
   css`
     top: 15px;
-    font-size: 13px;
     color: #777;
   `;
 
@@ -44,8 +44,6 @@ const Label = styled("label")`
   top: 50%;
   margin-top: -8px;
   transition: all 0.2s ease;
-  font-weight: 100;
-  font-size: 13px;
   margin-bottom: 5px;
   ${isLabelMiddle};
 `;
