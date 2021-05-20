@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import InputText from "../common/InputText/InputText";
 import Button from "../common/Button/Button";
 import FileUploader from "../common/FileUploader/FileUploader";
@@ -9,6 +11,8 @@ import Select from "../common/Select/Select";
 import Checkbox from "../common/Checkbox/Checkbox";
 import articleSchema from "./articleSchema";
 import ErrorLabel from "../common/ErrorLabel/ErrorLabel";
+import ButtonIcon from "../common/ButtonIcon/ButtonIcon";
+import { mq } from "../../utils/breakpoints";
 
 const Label = styled.p`
   color: #737373;
@@ -18,9 +22,11 @@ const Label = styled.p`
 `;
 
 const Preview = styled.img`
-  dispaly: block;
-  width: 20%;
-  margin: 0 auto;
+  display: block;
+  ${mq({
+    width: ["30%", "30%", "30%", "20%"],
+  })}
+  margin: 10px 5px;
 `;
 
 const Form = styled.form`
@@ -32,6 +38,28 @@ const Form = styled.form`
 const UploadWrapper = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const PreviewContainer = styled.div`
+  position: relative;
+
+  button {
+    position: absolute;
+    ${mq({
+      top: ["0px", "0px", "8px"],
+      left: ["32%", "32%", "21%"],
+    })}
+    svg {
+      color: darkgrey;
+    }
+  }
+`;
+
+const H4 = styled.h4`
+  color: #737373;
+  padding: 0 5px;
+  font-size: 13px;
+  font-weight: 100;
 `;
 
 const ArticleForm = ({ onSubmit }) => {
@@ -137,13 +165,15 @@ const ArticleForm = ({ onSubmit }) => {
       )}
       {formik.errors.file && <ErrorLabel error={formik.errors.file} />}
       {cardImage && (
-        <div>
-          <h2>Preview</h2>
-          <Preview src={cardImage} />
-          <Button type="button" onClick={onClear}>
-            Remove picture
-          </Button>
-        </div>
+        <>
+          <H4>Uploaded file</H4>
+          <PreviewContainer>
+            <Preview src={cardImage} />
+            <ButtonIcon onClick={onClear}>
+              <FontAwesomeIcon icon={faTimesCircle} />
+            </ButtonIcon>
+          </PreviewContainer>
+        </>
       )}
 
       <Button type="submit" primary>

@@ -1,6 +1,5 @@
 import React from "react";
 import ArticleForm from "../../Components/Article/ArticleForm";
-import FileUploader from "../../Components/common/FileUploader/FileUploader";
 
 const Dressing = () => {
   const handleSubmit = () => {
