@@ -5,11 +5,10 @@ import PropTypes from "prop-types";
 import InputText from "../common/InputText/InputText";
 import Button from "../common/Button/Button";
 import FileUploader from "../common/FileUploader/FileUploader";
-import Camera from "../common/Camera/Camera";
-import useToggle from "../../Hooks/useToggle";
 import Select from "../common/Select/Select";
 import Checkbox from "../common/Checkbox/Checkbox";
 import articleSchema from "./articleSchema";
+import ErrorLabel from "../common/ErrorLabel/ErrorLabel";
 
 const Label = styled.p`
   color: #737373;
@@ -28,15 +27,11 @@ const Form = styled.form`
   input {
     margin-bottom: 10px;
   }
-
-  button {
-    margin-top: 70px;
-  }
 `;
 
-const ErrorLabel = styled.p`
-  margin: 10px 0;
-  color: #e01518;
+const UploadWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const ArticleForm = ({ onSubmit }) => {
@@ -51,13 +46,11 @@ const ArticleForm = ({ onSubmit }) => {
     validationSchema: articleSchema,
     validateOnChange: false,
     onSubmit: values => {
-      debugger;
       onSubmit({ ...values });
     },
   });
 
   const [cardImage, setCardImage] = useState();
-  const [isOn, toggleIsOn] = useToggle();
 
   const onClear = () => {
     setCardImage(undefined);
@@ -67,12 +60,6 @@ const ArticleForm = ({ onSubmit }) => {
   const setFile = blob => {
     setCardImage(URL.createObjectURL(blob));
     formik.setFieldValue("file", blob);
-  };
-
-  const onCapture = blob => {
-    setFile(blob);
-
-    toggleIsOn();
   };
 
   const onFileChange = e => {
@@ -143,17 +130,12 @@ const ArticleForm = ({ onSubmit }) => {
       <Checkbox id="pattern" name="pattern" label="Pattern" />
 
       {!cardImage && (
-        <>
+        <UploadWrapper>
           <Label>Upload file : </Label>
           <FileUploader onChange={onFileChange} />
-          <Button type="button" onClick={toggleIsOn}>
-            {!isOn ? "open camera" : "close camera"}
-          </Button>
-        </>
+        </UploadWrapper>
       )}
-
-      {isOn && !cardImage && <Camera isActivated={isOn} onCapture={onCapture} onClear={onClear} />}
-      {formik.errors.file && <ErrorLabel>{formik.errors.file}</ErrorLabel>}
+      {formik.errors.file && <ErrorLabel error={formik.errors.file} />}
       {cardImage && (
         <div>
           <h2>Preview</h2>

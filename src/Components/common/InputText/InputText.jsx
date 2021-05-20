@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
+import ErrorLabel from "../ErrorLabel/ErrorLabel";
 
 const InputWrapper = styled.div`
   position: relative;
@@ -48,11 +49,6 @@ const Label = styled("label")`
   ${isLabelMiddle};
 `;
 
-const ErrorLabel = styled.p`
-  margin: 10px 0;
-  color: #e01518;
-`;
-
 const InputText = ({ label, type, id, name, value, error, onChange }) => (
   <>
     <label htmlFor={id} className="sr-only">
@@ -64,7 +60,7 @@ const InputText = ({ label, type, id, name, value, error, onChange }) => (
         {label}
       </Label>
     </InputWrapper>
-    {error && <ErrorLabel>{error}</ErrorLabel>}
+    {error && <ErrorLabel error={error} />}
   </>
 );
 

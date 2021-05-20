@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import ErrorLabel from "../ErrorLabel/ErrorLabel";
 
 const Container = styled("div")`
   position: relative;
@@ -58,11 +59,6 @@ const Container = styled("div")`
   }
 `;
 
-const ErrorLabel = styled.p`
-  margin: 10px 0;
-  color: #e01518;
-`;
-
 const Select = ({ id, label, value, options, error, onChange }) => {
   const noop = () => {};
   return (
@@ -90,7 +86,7 @@ const Select = ({ id, label, value, options, error, onChange }) => {
           {label}
         </label>
       </Container>
-      {error && <ErrorLabel>{error}</ErrorLabel>}
+      {error && <ErrorLabel error={error} />}
     </>
   );
 };
