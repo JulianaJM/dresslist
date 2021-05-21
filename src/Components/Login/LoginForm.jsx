@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import InputText from "../common/InputText/InputText";
 import loginSchema from "./loginSchema";
 import Button from "../common/Button/Button";
+import { mq } from "../../utils/breakpoints";
 
 const Form = styled.form`
   input {
@@ -13,7 +14,15 @@ const Form = styled.form`
 
   button {
     margin-top: 70px;
+    ${mq({
+      width: ["100%", "50%"],
+    })}
   }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const LoginForm = ({ onSubmit, isLoading }) => {
@@ -52,9 +61,11 @@ const LoginForm = ({ onSubmit, isLoading }) => {
         error={formik.errors.password}
       />
 
-      <Button type="submit" disabled={isLoading} primary>
-        Sign in
-      </Button>
+      <ButtonWrapper>
+        <Button type="submit" disabled={isLoading} primary>
+          Sign in
+        </Button>
+      </ButtonWrapper>
     </Form>
   );
 };

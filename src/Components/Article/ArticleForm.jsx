@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { css } from "@emotion/react";
 import InputText from "../common/InputText/InputText";
 import Button from "../common/Button/Button";
 import FileUploader from "../common/FileUploader/FileUploader";
@@ -46,9 +47,10 @@ const PreviewContainer = styled.div`
   button {
     position: absolute;
     ${mq({
-      top: ["0px", "0px", "8px"],
-      left: ["32%", "32%", "21%"],
+      top: ["0px"],
+      left: ["32%", "32%", "32%", "21%"],
     })}
+
     svg {
       color: darkgrey;
     }
@@ -60,6 +62,19 @@ const H4 = styled.h4`
   padding: 0 5px;
   font-size: 13px;
   font-weight: 100;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const submitBtn = css`
+  ${mq({
+    marginTop: ["80px", "50px"],
+    marginBottom: ["0", "10px"],
+    width: ["100%", "50%"],
+  })}
 `;
 
 const ArticleForm = ({ onSubmit }) => {
@@ -176,9 +191,11 @@ const ArticleForm = ({ onSubmit }) => {
         </>
       )}
 
-      <Button type="submit" primary>
-        create
-      </Button>
+      <ButtonWrapper>
+        <Button type="submit" primary customStyles={submitBtn}>
+          create
+        </Button>
+      </ButtonWrapper>
     </Form>
   );
 };

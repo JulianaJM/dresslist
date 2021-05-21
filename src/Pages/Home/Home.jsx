@@ -11,6 +11,7 @@ import Login from "../Login/LoginContainer";
 import Modal from "../../Components/common/Modal/Modal";
 import Button from "../../Components/common/Button/Button";
 import useToggle from "../../Hooks/useToggle";
+import Title from "../../Components/common/Title/Title";
 
 const Section = styled("section")`
   ${mq({
@@ -54,17 +55,13 @@ const Paragraph = styled("p")`
   })}
 `;
 
-const H2 = styled("h2")`
+const customTitleSection2 = css`
   ${mq({
-    fontSize: ["1.9rem", "3rem"],
-    fontWeight: ["bold"],
     textAlign: ["center", "center", "left"],
-    color: ["#c92c7f"],
-    padding: ["25px 5px", "25px 5px", "35px 10px"],
   })}
 `;
 
-const customH2Section3 = css`
+const customTitleSection3 = css`
   ${mq({
     textAlign: ["center", "center", "right"],
     padding: ["25px 5px", "25px 5px", "35px 95px 35px 0px"],
@@ -148,7 +145,7 @@ const HomePage = () => {
       <Section>
         <LoginContainer>
           <LogoWrapper>
-            <Logo />
+            <Logo isBig />
             <h1> Never forget your Clothes again</h1>
           </LogoWrapper>
 
@@ -165,7 +162,7 @@ const HomePage = () => {
         </Section1Image>
       </Section>
       <Section>
-        <H2>Combination of clothes</H2>
+        <Title customStyles={customTitleSection2}>Combination of clothes</Title>
         <Paragraph>
           You can create all the combinations you want in a few clics. Just navigate in your
           dressing and choose what you want to wear today !
@@ -173,7 +170,7 @@ const HomePage = () => {
         <img src={mannequin} alt="" css={imgMannequin} />
       </Section>
       <Section>
-        <H2 css={customH2Section3}>Ask your friends</H2>
+        <Title customStyles={customTitleSection3}>Ask your friends</Title>
         <Paragraph>
           You don't know what to wear or you can't choose ? Make your combination and share it with
           your friends or your family.

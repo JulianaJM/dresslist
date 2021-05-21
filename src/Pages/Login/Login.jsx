@@ -35,7 +35,7 @@ const buttonCustom = css`
   }
   text-decoration: underline;
   color: #191530;
-  padding: 0 5px;
+  padding: 0 15px;
 `;
 
 const Title = styled("h3")`

@@ -6,6 +6,7 @@ const CheckboxEl = styled("span")`
   height: 25px;
   width: 25px;
   background-color: #eee;
+  border: 1px solid #ccc;
 
   &:after {
     content: "";
@@ -29,6 +30,10 @@ const Input = styled("input")`
   cursor: pointer;
   height: 0;
   width: 0;
+
+  &:focus ~ span {
+    outline: 1px dashed #ccc;
+  }
 `;
 
 const Container = styled("label")`

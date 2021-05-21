@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import InputText from "../common/InputText/InputText";
 import signUpSchema from "./signUpSchema";
 import Button from "../common/Button/Button";
+import { mq } from "../../utils/breakpoints";
 
 const Form = styled.form`
   input {
@@ -13,7 +14,15 @@ const Form = styled.form`
 
   button {
     margin-top: 70px;
+    ${mq({
+      width: ["100%", "50%"],
+    })}
   }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const SignUpForm = ({ onSubmit, isLoading }) => {
@@ -63,9 +72,11 @@ const SignUpForm = ({ onSubmit, isLoading }) => {
         error={formik.errors.confirmedPassword}
       />
 
-      <Button type="submit" disabled={isLoading} primary>
-        Sign up
-      </Button>
+      <ButtonWrapper>
+        <Button type="submit" disabled={isLoading} primary>
+          Sign up
+        </Button>
+      </ButtonWrapper>
     </Form>
   );
 };

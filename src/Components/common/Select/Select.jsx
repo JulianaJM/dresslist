@@ -49,7 +49,10 @@ const Container = styled("div")`
     padding-bottom: 10px;
     border: none;
     border-bottom: ${props => (props.error ? "1px solid #e01518 " : "1px solid #ccc")};
-    outline: none;
+
+    &:focus {
+      outline: 1px dashed #ccc;
+    }
 
     &:focus ~ label,
     &:valid ~ label {
@@ -63,7 +66,7 @@ const Select = ({ id, label, value, options, error, onChange }) => {
   const noop = () => {};
   return (
     <>
-      <Container>
+      <Container error={error}>
         <select id={id} value={value} onBlur={noop} onChange={onChange}>
           <option id="-1" value="" />
           {options.map(opt => (

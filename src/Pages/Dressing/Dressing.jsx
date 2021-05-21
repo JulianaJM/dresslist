@@ -1,5 +1,16 @@
 import React from "react";
+import styled from "@emotion/styled";
 import ArticleForm from "../../Components/Article/ArticleForm";
+import Title from "../../Components/common/Title/Title";
+import { mq } from "../../utils/breakpoints";
+
+const Container = styled("div")`
+  ${mq({
+    width: ["100%", "50%"],
+    padding: ["30px 10px", "0"],
+    margin: ["0", "0 auto"],
+  })};
+`;
 
 const Dressing = () => {
   const handleSubmit = () => {
@@ -7,11 +18,11 @@ const Dressing = () => {
     console.log("sub");
   };
   return (
-    <>
-      <h2>Load Article</h2>
+    <Container>
+      <Title>Let's create an article</Title>
 
       <ArticleForm onSubmit={handleSubmit} />
-    </>
+    </Container>
   );
 };
 
