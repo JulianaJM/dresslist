@@ -48,6 +48,7 @@ const FileUploader = ({ onChange, disabled }) => (
       accept=".png, .jpg, .jpeg"
       capture="camera" // opens directly the camera
       disabled={disabled}
+      data-testid="file"
     />
     <Icon disabled={disabled}>
       {!isMobile ? <FontAwesomeIcon icon={faFolder} /> : <FontAwesomeIcon icon={faCamera} />}
