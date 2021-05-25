@@ -1,3 +1,4 @@
+import { push } from "connected-react-router";
 import { registerUser, loginUser } from "../services/authenticationService";
 import { MESSAGE_TYPE } from "../utils/constants";
 import {
@@ -57,6 +58,7 @@ export const register = inputUser => (dispatch, _, { client }) =>
           type: MESSAGE_TYPE.SUCCESS,
         };
         dispatch(setRegisterSuccess(data, alert));
+        dispatch(push("/login"));
       })
       .catch(() => {
         const alert = {
@@ -77,12 +79,17 @@ export const login = inputUser => (dispatch, _, { client }) => {
   return loginUser(client, inputUser)
     .then(data => {
       dispatch(setLoginSuccess(data));
+      debugger;
+
+      dispatch(push("/dressing"));
     })
-    .catch(() => {
+    .catch(err => {
       const alert = {
         message: "An error occured during login please retry ...",
         type: MESSAGE_TYPE.ERROR,
       };
+      debugger;
+      console.log(err);
       dispatch(setLoginFailure(alert));
     })
     .finally(() => {

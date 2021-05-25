@@ -92,7 +92,7 @@
     "focus-trap-react": "^8.4.2",
     "formik": "^2.2.6",
     "graphql": "^15.5.0",
-    "history": "^5.0.0",
+    "history": "4.10.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-device-detect": "^1.17.0",

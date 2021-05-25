@@ -8,16 +8,20 @@ import gqlClient from "./apollo.client";
 
 export const history = createBrowserHistory();
 
-const rootReducer = combineReducers({
-  user: userReducer,
-  alert: messageReducer,
-  router: connectRouter(history),
-});
+const createRootReducer = history =>
+  combineReducers({
+    router: connectRouter(history),
+    user: userReducer,
+    alert: messageReducer,
+  });
 
 const composeEnhancers =
   (typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-const middleware = [thunk.withExtraArgument({ client: gqlClient() }), routerMiddleware(history)];
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+const middlewares = [routerMiddleware(history), thunk.withExtraArgument({ client: gqlClient() })];
+const store = createStore(
+  createRootReducer(history),
+  composeEnhancers(applyMiddleware(...middlewares))
+);
 
 export default store;

@@ -1,23 +1,25 @@
 import { hot } from "react-hot-loader/root";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./Pages/Home/Home";
+import { Switch, Route } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import HomePage from "./Pages/Home/HomeContainer";
 import Login from "./Pages/Login/LoginContainer";
 import Dressing from "./Pages/Dressing/Dressing";
 import Header from "./Components/Header/HeaderContainer";
+import { history } from "../store";
 
 class App extends Component {
   render() {
     return (
       <>
         <Header />
-        <Router>
+        <ConnectedRouter history={history}>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
             <Route path="/dressing" component={Dressing} />
           </Switch>
-        </Router>
+        </ConnectedRouter>
       </>
     );
   }

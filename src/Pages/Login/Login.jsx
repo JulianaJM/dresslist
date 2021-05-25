@@ -70,13 +70,7 @@ const Login = ({
     if (isCreated) {
       if (!isHomePage) {
         toggleIsOn();
-      } else {
-        history.push("/login");
       }
-    }
-
-    if (isAuthenticated) {
-      history.push("/dressing");
     }
   }, [isCreated, isHomePage, isAuthenticated, toggleIsOn, history]);
 

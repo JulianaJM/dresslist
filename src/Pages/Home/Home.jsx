@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import PropTypes from "prop-types";
 import Logo from "../../Components/common/Logo/Logo";
 import { mq } from "../../utils/breakpoints";
 import closet from "../../assets/images/closet.png";
@@ -138,7 +139,7 @@ const registerButton = css`
   margin: 8px auto;
 `;
 
-const HomePage = () => {
+const HomePage = ({ isAuthenticated }) => {
   const [isModalOn, toggleIsModalOn] = useToggle();
   return (
     <>
@@ -148,9 +149,9 @@ const HomePage = () => {
             <Logo isBig />
             <h1> Never forget your Clothes again</h1>
           </LogoWrapper>
-
-          <Login customStyles={customLogin} />
+          {!isAuthenticated && <Login customStyles={customLogin} />}
         </LoginContainer>
+
         <Paragraph color="#fff">
           The dressing is a space which offering you a large vision of your closet. Just take a
           picture of your clothes, add some informations, and it will be added in your dressing
@@ -177,15 +178,23 @@ const HomePage = () => {
         </Paragraph>
         <img src={smartphoneGirl} alt="" css={imgSmartphoneGirl} />
 
-        <Button type="button" primary onClick={toggleIsModalOn} customStyles={registerButton}>
-          Register
-        </Button>
-        <Modal isOpen={isModalOn} onClose={toggleIsModalOn}>
-          <Login />
-        </Modal>
+        {!isAuthenticated && (
+          <>
+            <Button type="button" primary onClick={toggleIsModalOn} customStyles={registerButton}>
+              Register
+            </Button>
+            <Modal isOpen={isModalOn} onClose={toggleIsModalOn}>
+              <Login />
+            </Modal>
+          </>
+        )}
       </Section>
     </>
   );
+};
+
+HomePage.propTypes = {
+  isAuthenticated: PropTypes.bool,
 };
 
 export default HomePage;

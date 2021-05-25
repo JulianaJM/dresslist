@@ -4,6 +4,7 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
 } from "../actions/actionTypes";
+import { isAuthenticated } from "../services/authenticationService";
 
 const initialState = {
   isLoading: false,
