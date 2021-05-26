@@ -13,6 +13,7 @@ import Modal from "../../Components/common/Modal/Modal";
 import Button from "../../Components/common/Button/Button";
 import useToggle from "../../Hooks/useToggle";
 import Title from "../../Components/common/Title/Title";
+import { isAuthenticated } from "../../services/authenticationService";
 
 const Section = styled("section")`
   ${mq({
@@ -139,8 +140,9 @@ const registerButton = css`
   margin: 8px auto;
 `;
 
-const HomePage = ({ isAuthenticated }) => {
+const HomePage = () => {
   const [isModalOn, toggleIsModalOn] = useToggle();
+
   return (
     <>
       <Section>
@@ -149,7 +151,7 @@ const HomePage = ({ isAuthenticated }) => {
             <Logo isBig />
             <h1> Never forget your Clothes again</h1>
           </LogoWrapper>
-          {!isAuthenticated && <Login customStyles={customLogin} />}
+          {!isAuthenticated() && <Login customStyles={customLogin} />}
         </LoginContainer>
 
         <Paragraph color="#fff">
@@ -178,7 +180,7 @@ const HomePage = ({ isAuthenticated }) => {
         </Paragraph>
         <img src={smartphoneGirl} alt="" css={imgSmartphoneGirl} />
 
-        {!isAuthenticated && (
+        {!isAuthenticated() && (
           <>
             <Button type="button" primary onClick={toggleIsModalOn} customStyles={registerButton}>
               Register
@@ -191,10 +193,6 @@ const HomePage = ({ isAuthenticated }) => {
       </Section>
     </>
   );
-};
-
-HomePage.propTypes = {
-  isAuthenticated: PropTypes.bool,
 };
 
 export default HomePage;

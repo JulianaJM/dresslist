@@ -4,12 +4,10 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
 } from "../actions/actionTypes";
-import { isAuthenticated } from "../services/authenticationService";
 
 const initialState = {
   isLoading: false,
   isCreated: false,
-  isAuthenticated: false,
   user: {},
 };
 
@@ -32,7 +30,7 @@ export default function userReducer(state = initialState, action) {
 
     case LOGIN_SUCCESS: {
       const { user } = action.payload;
-      return { ...state, user, isAuthenticated: true };
+      return { ...state, user };
     }
 
     default:
