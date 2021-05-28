@@ -97,6 +97,13 @@ describe("async actions", () => {
         },
       },
       {
+        type: "@@router/CALL_HISTORY_METHOD",
+        payload: {
+          args: ["/login"],
+          method: "push",
+        },
+      },
+      {
         type: types.REGISTER_LOADING,
         payload: { isLoading: false },
       },
@@ -125,6 +132,13 @@ describe("async actions", () => {
         type: types.LOGIN_SUCCESS,
         payload: {
           user: { __typename: "login", token: "token" },
+        },
+      },
+      {
+        type: "@@router/CALL_HISTORY_METHOD",
+        payload: {
+          args: ["/dressing"],
+          method: "push",
         },
       },
       {

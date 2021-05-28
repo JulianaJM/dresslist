@@ -79,17 +79,13 @@ export const login = inputUser => (dispatch, _, { client }) => {
   return loginUser(client, inputUser)
     .then(data => {
       dispatch(setLoginSuccess(data));
-      debugger;
-
       dispatch(push("/dressing"));
     })
-    .catch(err => {
+    .catch(() => {
       const alert = {
         message: "An error occured during login please retry ...",
         type: MESSAGE_TYPE.ERROR,
       };
-      debugger;
-      console.log(err);
       dispatch(setLoginFailure(alert));
     })
     .finally(() => {

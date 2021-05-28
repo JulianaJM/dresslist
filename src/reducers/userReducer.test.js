@@ -10,7 +10,6 @@ import userReducer from "./userReducer";
 const initialState = {
   isLoading: false,
   isCreated: false,
-  isAuthenticated: false,
   user: {},
 };
 
@@ -64,7 +63,6 @@ describe("userReducer", () => {
     ).toEqual({
       ...initialState,
       user: { token: "token" },
-      isAuthenticated: true,
     });
   });
 });
