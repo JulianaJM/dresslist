@@ -6,8 +6,6 @@ const mapStateToProps = ({ user, alert, router }) => {
   const isHomePage = router.location.pathname === "/";
   return {
     isLoading: user.isLoading,
-    isCreated: user.isCreated,
-    isAuthenticated: user.isAuthenticated,
     alert,
     isHomePage,
   };

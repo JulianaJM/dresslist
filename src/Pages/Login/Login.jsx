@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
+import React from "react";
+import AlertMessage from "../../Components/common/AlertMessage/AlertMessage";
+import Button from "../../Components/common/Button/Button";
 import LoginForm from "../../Components/Login/LoginForm";
 import SignUpForm from "../../Components/SignUp/SignUpForm";
 import useToggle from "../../Hooks/useToggle";
-import Button from "../../Components/common/Button/Button";
 import { mq } from "../../utils/breakpoints";
-import AlertMessage from "../../Components/common/AlertMessage/AlertMessage";
 
 const Wrapper = styled("div")`
   position: ${props => (props.isRelative ? "relative" : "initial")};
@@ -53,26 +52,8 @@ const Span = styled.span`
   padding: 0 5px;
 `;
 
-const Login = ({
-  register,
-  login,
-  isLoading,
-  customStyles,
-  alert,
-  isCreated,
-  isHomePage,
-  isAuthenticated,
-}) => {
+const Login = ({ register, login, isLoading, customStyles, alert, isHomePage }) => {
   const [isOn, toggleIsOn] = useToggle();
-  const history = useHistory();
-
-  useEffect(() => {
-    if (isCreated) {
-      if (!isHomePage) {
-        toggleIsOn();
-      }
-    }
-  }, [isCreated, isHomePage, isAuthenticated, toggleIsOn, history]);
 
   return (
     <>
@@ -103,9 +84,7 @@ Login.propTypes = {
   login: PropTypes.func,
   isLoading: PropTypes.bool,
   alert: PropTypes.object,
-  isCreated: PropTypes.bool,
   isHomePage: PropTypes.bool,
-  isAuthenticated: PropTypes.bool,
 };
 
 export default Login;
