@@ -4,7 +4,7 @@ import { graphql } from "msw";
 import * as actions from "./userActions";
 import * as types from "./actionTypes";
 import gqlClient from "../../apollo.client";
-import { server } from "../mocks/server";
+import { server } from "../../__mocks__/gqlMswServer";
 
 const middlewares = [thunk.withExtraArgument({ client: gqlClient() })];
 const mockStore = configureMockStore(middlewares);

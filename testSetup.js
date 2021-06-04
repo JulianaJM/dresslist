@@ -2,7 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import "@testing-library/jest-dom";
 import "@testing-library/react";
-import { server } from "./src/mocks/server.js";
+import { server } from "./__mocks__/gqlMswServer.js";
 
 // mock scrollTo browser functions
 // https://stackoverflow.com/questions/57311971/error-not-implemented-window-scrollto-how-do-we-remove-this-error-from-jest-t

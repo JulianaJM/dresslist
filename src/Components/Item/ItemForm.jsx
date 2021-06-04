@@ -10,7 +10,7 @@ import Button from "../common/Button/Button";
 import FileUploader from "../common/FileUploader/FileUploader";
 import Select from "../common/Select/Select";
 import Checkbox from "../common/Checkbox/Checkbox";
-import articleSchema from "./articleSchema";
+import articleSchema from "./itemSchema";
 import ErrorLabel from "../common/ErrorLabel/ErrorLabel";
 import ButtonIcon from "../common/ButtonIcon/ButtonIcon";
 import { mq } from "../../utils/breakpoints";
@@ -85,11 +85,14 @@ const ArticleForm = ({ onSubmit }) => {
       color: "",
       size: "",
       file: undefined,
+      pantLength: "",
     },
     validationSchema: articleSchema,
     validateOnChange: false,
     onSubmit: values => {
-      onSubmit({ ...values });
+      debugger;
+      values.pantLength = Number(values.pantLength);
+      onSubmit(values);
     },
   });
 
@@ -163,8 +166,8 @@ const ArticleForm = ({ onSubmit }) => {
       <InputText
         label="Pants lenght"
         type="text"
-        id="pantsLength"
-        name="pantsLength"
+        id="pantLength"
+        name="pantLength"
         value={formik.values.pantsLength}
         onChange={formik.handleChange}
         error={formik.errors.pantsLength}
