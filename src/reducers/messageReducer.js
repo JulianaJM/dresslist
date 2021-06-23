@@ -3,6 +3,7 @@ import {
   REGISTER_FAILURE,
   RESET_ALERT_MESSAGE,
   REGISTER_SUCCESS,
+  CREATE_ITEM_FAILURE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -14,7 +15,8 @@ export default function messageReducer(state = initialState, action) {
   switch (action.type) {
     case REGISTER_SUCCESS:
     case REGISTER_FAILURE:
-    case LOGIN_FAILURE: {
+    case LOGIN_FAILURE:
+    case CREATE_ITEM_FAILURE: {
       const { alert } = action.payload;
       return { ...state, ...alert };
     }

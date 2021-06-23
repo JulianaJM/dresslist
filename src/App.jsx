@@ -8,6 +8,7 @@ import Dressing from "./Pages/Dressing/DressingContainer";
 import Header from "./Components/Header/HeaderContainer";
 import { history } from "../store";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import DressingList from "./Pages/Dressing/DressingList";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
             <PrivateRoute path="/dressing" component={Dressing} />
+            <PrivateRoute path="/dressinglist" component={DressingList} />
           </Switch>
         </ConnectedRouter>
       </>

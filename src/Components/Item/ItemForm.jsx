@@ -90,8 +90,6 @@ const ArticleForm = ({ onSubmit }) => {
     validationSchema: articleSchema,
     validateOnChange: false,
     onSubmit: values => {
-      debugger;
-      values.pantLength = Number(values.pantLength);
       onSubmit(values);
     },
   });

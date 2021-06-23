@@ -4,6 +4,8 @@ import { routerMiddleware, connectRouter } from "connected-react-router";
 import thunk from "redux-thunk";
 import userReducer from "./src/reducers/userReducer";
 import messageReducer from "./src/reducers/messageReducer";
+import itemReducer from "./src/reducers/itemReducer";
+
 import gqlClient from "./apollo.client";
 
 export const history = createBrowserHistory();
@@ -13,6 +15,7 @@ const createRootReducer = history =>
     router: connectRouter(history),
     user: userReducer,
     alert: messageReducer,
+    item: itemReducer,
   });
 
 const composeEnhancers =
