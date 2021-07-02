@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import ItemForm from "../../Components/Item/ItemForm";
 import Title from "../../Components/common/Title/Title";
 import { mq } from "../../utils/breakpoints";
+import Modal from "../../Components/common/Modal/Modal";
 
 const Container = styled("div")`
   ${mq({
@@ -17,7 +18,7 @@ const Container = styled("div")`
 const Dressing = ({ createItem, resetItem, isCreated }) => {
   const history = useHistory();
   const goToDressingList = () => {
-    history.push("/dressinglist");
+    history.push("/list");
   };
 
   return (
@@ -29,14 +30,14 @@ const Dressing = ({ createItem, resetItem, isCreated }) => {
           <ItemForm onSubmit={createItem} />
         </>
       ) : (
-        <>
+        <Modal isOpen={isCreated}>
           <button type="button" onClick={resetItem}>
             Create another ?
           </button>
           <button type="button" onClick={goToDressingList}>
             Go to dresslist
           </button>
-        </>
+        </Modal>
       )}
     </Container>
   );

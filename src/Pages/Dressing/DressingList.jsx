@@ -14,6 +14,7 @@ const Container = styled("div")`
 
 const DressingList = () => (
   <Container>
+    <h2>My dressing</h2>
     <Dresslist />
   </Container>
 );

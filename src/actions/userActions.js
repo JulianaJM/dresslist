@@ -79,7 +79,7 @@ export const login = inputUser => (dispatch, _, { client }) => {
   return loginUser(client, inputUser)
     .then(data => {
       dispatch(setLoginSuccess(data));
-      dispatch(push("/dressing"));
+      dispatch(push("/add"));
     })
     .catch(() => {
       const alert = {

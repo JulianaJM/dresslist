@@ -59,7 +59,7 @@ const ModalClose = styled.div`
   }
 `;
 
-const Modal = ({ children, isOpen, onClose }) => {
+const Modal = ({ children, isOpen, onClose = () => {} }) => {
   const enableScroll = () => {
     // enable scroll
     const scrollY = document.documentElement.style.getPropertyValue("--scroll-y");
@@ -130,7 +130,7 @@ const Modal = ({ children, isOpen, onClose }) => {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 

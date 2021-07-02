@@ -137,7 +137,7 @@ describe("async actions", () => {
       {
         type: "@@router/CALL_HISTORY_METHOD",
         payload: {
-          args: ["/dressing"],
+          args: ["/add"],
           method: "push",
         },
       },
