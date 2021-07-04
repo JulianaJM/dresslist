@@ -18,14 +18,12 @@ const Overlay = styled.div`
   left: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
 `;
 
 const ModalWraper = styled("div")`
   ${mq({
-    width: ["100%", "90%"],
-    height: ["100%", "90%"],
     animationName: ["slideup", "none"],
     animationDuration: ["0.3s"],
     animationFillMode: ["forwards"],
@@ -38,7 +36,7 @@ const ModalWraper = styled("div")`
   background-color: #fff;
   border-radius: 5px;
   z-index: 2;
-  padding: 5px 15px;
+  padding: 15px;
   overflow-y: scroll;
 `;
 
@@ -52,6 +50,7 @@ const ModalClose = styled.div`
     font-size: 1.5rem;
     color: #969696;
     cursor: pointer;
+    margin-bottom: 5px;
 
     &:hover {
       color: #c92c7f;

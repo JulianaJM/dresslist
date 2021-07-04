@@ -4,7 +4,7 @@ import Checkbox from "./Checkbox";
 
 describe("Checkbox", () => {
   test("renders Checkbox component", () => {
-    render(<Checkbox id="checkbox" label="checkbox" />);
+    render(<Checkbox id="checkbox" label="checkbox" onChange={jest.fn()} />);
     expect(screen.getByText(/checkbox/i)).toBeInTheDocument();
   });
 });

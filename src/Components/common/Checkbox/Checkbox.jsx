@@ -63,10 +63,10 @@ const Container = styled("label")`
   }
 `;
 
-const Checkbox = ({ id, label }) => (
+const Checkbox = ({ id, label, onChange, checked = false }) => (
   <Container htmlFor={id}>
     {label}
-    <Input id={id} type="checkbox" />
+    <Input id={id} type="checkbox" onChange={onChange} checked={checked} />
     <CheckboxEl />
   </Container>
 );
@@ -74,5 +74,7 @@ const Checkbox = ({ id, label }) => (
 Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  checked: PropTypes.bool,
 };
 export default Checkbox;

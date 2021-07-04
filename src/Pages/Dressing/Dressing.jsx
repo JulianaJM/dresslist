@@ -15,7 +15,7 @@ const Container = styled("div")`
   })};
 `;
 
-const Dressing = ({ createItem, resetItem, isCreated }) => {
+const Dressing = ({ createItem, resetItem, isCreated = false }) => {
   const history = useHistory();
   const goToDressingList = () => {
     history.push("/list");
@@ -23,22 +23,16 @@ const Dressing = ({ createItem, resetItem, isCreated }) => {
 
   return (
     <Container>
-      {!isCreated ? (
-        <>
-          <Title>Let's create an article</Title>
-
-          <ItemForm onSubmit={createItem} />
-        </>
-      ) : (
-        <Modal isOpen={isCreated}>
-          <button type="button" onClick={resetItem}>
-            Create another ?
-          </button>
-          <button type="button" onClick={goToDressingList}>
-            Go to dresslist
-          </button>
-        </Modal>
-      )}
+      <Title>Let's create an article</Title>
+      <ItemForm onSubmit={createItem} />
+      <Modal isOpen={isCreated} onClose={resetItem}>
+        <button type="button" onClick={resetItem}>
+          Create another ?
+        </button>
+        <button type="button" onClick={goToDressingList}>
+          Go to dresslist
+        </button>
+      </Modal>
     </Container>
   );
 };

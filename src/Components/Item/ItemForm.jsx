@@ -78,6 +78,8 @@ const submitBtn = css`
 `;
 
 const ArticleForm = ({ onSubmit }) => {
+  const [cardImage, setCardImage] = useState();
+
   const formik = useFormik({
     initialValues: {
       type: "",
@@ -86,15 +88,17 @@ const ArticleForm = ({ onSubmit }) => {
       size: "",
       file: undefined,
       pantLength: "",
+      pattern: false,
     },
     validationSchema: articleSchema,
     validateOnChange: false,
-    onSubmit: values => {
+    onSubmit: (values, { resetForm, setFieldValue }) => {
       onSubmit(values);
+      resetForm();
+      setFieldValue("file", undefined);
+      setCardImage(undefined);
     },
   });
-
-  const [cardImage, setCardImage] = useState();
 
   const onClear = () => {
     setCardImage(undefined);
@@ -166,12 +170,18 @@ const ArticleForm = ({ onSubmit }) => {
         type="text"
         id="pantLength"
         name="pantLength"
-        value={formik.values.pantsLength}
+        value={formik.values.pantLength}
         onChange={formik.handleChange}
-        error={formik.errors.pantsLength}
+        error={formik.errors.pantLength}
       />
 
-      <Checkbox id="pattern" name="pattern" label="Pattern" />
+      <Checkbox
+        id="pattern"
+        name="pattern"
+        label="Pattern"
+        onChange={formik.handleChange}
+        checked={formik.values.pattern}
+      />
 
       {!cardImage && (
         <UploadWrapper>
