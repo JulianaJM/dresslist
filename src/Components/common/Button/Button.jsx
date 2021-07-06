@@ -5,13 +5,16 @@ import PropTypes from "prop-types";
 const hasCustumStyles = props => props.styles;
 
 const ButtonEl = styled("button")`
-  background-color: ${props => (props.primary ? "#191530" : "lightgrey")};
+  background-color: ${props => (props.primary ? "#373382" : "lightgrey")};
   &:hover {
     background-color: ${props => (props.primary ? "#191540" : "grey")};
   }
   &:disabled {
     background-color: #cccccc;
     cursor: initial;
+  }
+  &:focus {
+    outline: 1px dashed #c92c7f;
   }
   color: #fff;
   font-size: 15px;

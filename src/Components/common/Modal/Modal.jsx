@@ -29,6 +29,7 @@ const ModalWraper = styled("div")`
     animationFillMode: ["forwards"],
     animationTimingFunction: ["ease-out"],
     top: ["150vh", "50%"],
+    width: ["90%", "35%"],
   })}
   position: fixed;
   left: 50%;
@@ -38,6 +39,8 @@ const ModalWraper = styled("div")`
   z-index: 2;
   padding: 15px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ModalClose = styled.div`
@@ -51,7 +54,10 @@ const ModalClose = styled.div`
     color: #969696;
     cursor: pointer;
     margin-bottom: 5px;
-
+    outline: none;
+    &:focus {
+      outline: 1px dashed #c92c7f;
+    }
     &:hover {
       color: #c92c7f;
     }

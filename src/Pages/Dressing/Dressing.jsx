@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import ItemForm from "../../Components/Item/ItemForm";
 import Title from "../../Components/common/Title/Title";
 import { mq } from "../../utils/breakpoints";
 import Modal from "../../Components/common/Modal/Modal";
+import Button from "../../Components/common/Button/Button";
 
 const Container = styled("div")`
   ${mq({
@@ -13,6 +15,10 @@ const Container = styled("div")`
     padding: ["30px 10px", "0"],
     margin: ["0", "0 auto"],
   })};
+`;
+
+const button = css`
+  margin: 8px auto;
 `;
 
 const Dressing = ({ createItem, resetItem, isCreated = false }) => {
@@ -26,12 +32,12 @@ const Dressing = ({ createItem, resetItem, isCreated = false }) => {
       <Title>Let's create an article</Title>
       <ItemForm onSubmit={createItem} />
       <Modal isOpen={isCreated} onClose={resetItem}>
-        <button type="button" onClick={resetItem}>
+        <Button type="button" onClick={resetItem} customStyles={button}>
           Create another ?
-        </button>
-        <button type="button" onClick={goToDressingList}>
+        </Button>
+        <Button type="button" primary onClick={goToDressingList} customStyles={button}>
           Go to dresslist
-        </button>
+        </Button>
       </Modal>
     </Container>
   );
