@@ -6,7 +6,7 @@ import { mq } from "../../utils/breakpoints";
 
 const Container = styled("div")`
   ${mq({
-    width: ["100%", "50%"],
+    width: ["100%", "80%"],
     padding: ["30px 10px", "0"],
     margin: ["0", "0 auto"],
   })};
