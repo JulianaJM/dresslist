@@ -46,3 +46,25 @@ img {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.sticky {
+  height: 40px;
+  z-index: 1;
+  position: fixed;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sticky > div {
+  display: flex;
+}
+
+.sticky > div > svg {
+  width: 50px;
+  height: 20px;
+}
+
+.sticky > div > p {
+  font-size: 1.2rem;
+}

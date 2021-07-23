@@ -9,6 +9,13 @@ import { server } from "./__mocks__/gqlMswServer.js";
 const noop = () => {};
 Object.defineProperty(window, "scrollTo", { value: noop, writable: true });
 
+const observe = jest.fn();
+const unobserve = jest.fn();
+window.IntersectionObserver = jest.fn(() => ({
+  observe,
+  unobserve,
+}));
+
 // Establish API mocking before all tests.
 beforeAll(() => {
   server.listen();
