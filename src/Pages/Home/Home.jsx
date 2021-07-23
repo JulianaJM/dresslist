@@ -142,16 +142,16 @@ const registerButton = css`
 
 const HomePage = () => {
   const [isModalOn, toggleIsModalOn] = useToggle();
-
+  const isLoggedIn = isAuthenticated();
   return (
     <>
       <Section>
         <LoginContainer>
           <LogoWrapper>
-            <Logo isBig />
+            {!isLoggedIn && <Logo isBig />}
             <h1> Never forget your Clothes again</h1>
           </LogoWrapper>
-          {!isAuthenticated() && <Login customStyles={customLogin} />}
+          {!isLoggedIn && <Login customStyles={customLogin} />}
         </LoginContainer>
 
         <Paragraph color="#fff">
@@ -180,7 +180,7 @@ const HomePage = () => {
         </Paragraph>
         <img src={smartphoneGirl} alt="" css={imgSmartphoneGirl} />
 
-        {!isAuthenticated() && (
+        {!isLoggedIn && (
           <>
             <Button type="button" primary onClick={toggleIsModalOn} customStyles={registerButton}>
               Register

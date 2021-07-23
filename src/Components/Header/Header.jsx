@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { mq } from "../../utils/breakpoints";
 import Logo from "../common/Logo/Logo";
+import { isAuthenticated } from "../../services/authenticationService";
 
 const Container = styled("div")`
   background: #191530;
@@ -28,6 +29,9 @@ const Header = ({ isHomePage }) => {
   const sentinalEl = useRef();
 
   useEffect(() => {
+    if (!isAuthenticated()) {
+      return;
+    }
     const handler = entries => {
       // entries is an array of observed dom nodes
       // we're only interested in the first one at [0]
@@ -43,10 +47,12 @@ const Header = ({ isHomePage }) => {
     const observer = new window.IntersectionObserver(handler);
     // give the observer some dom nodes to keep an eye on
     observer.observe(sentinalEl.current);
-  }, []);
+
+    return () => observer.unobserve(sentinalEl);
+  }, [isHomePage]);
 
   return (
-    !isHomePage && (
+    isAuthenticated() && (
       <>
         <div ref={sentinalEl} />
         <Container ref={headerEl}>
