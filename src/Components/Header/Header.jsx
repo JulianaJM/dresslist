@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
 import { mq } from "../../utils/breakpoints";
 import Logo from "../common/Logo/Logo";
 import { isAuthenticated } from "../../services/authenticationService";
@@ -17,14 +18,14 @@ const Container = styled("div")`
   transition: height 0.6s, linear;
 `;
 
-const Nav = styled.ul`
+const Nav = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
 
-const Header = ({ isHomePage }) => {
+const Header = ({ hasDresslist }) => {
   const headerEl = useRef();
   const sentinalEl = useRef();
 
@@ -48,8 +49,8 @@ const Header = ({ isHomePage }) => {
     // give the observer some dom nodes to keep an eye on
     observer.observe(sentinalEl.current);
 
-    return () => observer.unobserve(sentinalEl);
-  }, [isHomePage]);
+    return () => observer.unobserve(sentinalEl.current);
+  }, []);
 
   return (
     isAuthenticated() && (
@@ -58,9 +59,9 @@ const Header = ({ isHomePage }) => {
         <Container ref={headerEl}>
           <Logo />
           <Nav>
-            <li>home</li>
-            <li>add</li>
-            <li>list</li>
+            <Link to="/">Home</Link>
+            <Link to="/add">Create</Link>
+            {hasDresslist && <Link to="/list">List</Link>}
           </Nav>
         </Container>
       </>
@@ -69,6 +70,6 @@ const Header = ({ isHomePage }) => {
 };
 
 Header.propTypes = {
-  isHomePage: PropTypes.bool,
+  hasDresslist: PropTypes.bool,
 };
 export default Header;

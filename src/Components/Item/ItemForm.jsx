@@ -64,9 +64,13 @@ const H4 = styled.h4`
   font-weight: 100;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled("div")`
   display: flex;
   justify-content: center;
+
+  button {
+    margin-top: ${props => (props.up ? "0" : "50px")};
+  }
 `;
 
 const submitBtn = css`
@@ -202,7 +206,7 @@ const ArticleForm = ({ onSubmit }) => {
         </>
       )}
 
-      <ButtonWrapper>
+      <ButtonWrapper up={Boolean(cardImage)}>
         <Button type="submit" primary customStyles={submitBtn}>
           create
         </Button>

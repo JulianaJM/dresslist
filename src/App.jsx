@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
         <ConnectedRouter history={history}>
+          <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
