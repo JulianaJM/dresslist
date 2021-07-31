@@ -13,7 +13,7 @@ import DressingList from "./Pages/Dressing/DressingList";
 class App extends Component {
   render() {
     return (
-      <>
+      <div className="container-app">
         <ConnectedRouter history={history}>
           <Header />
           <Switch>
@@ -23,7 +23,7 @@ class App extends Component {
             <PrivateRoute path="/list" component={DressingList} />
           </Switch>
         </ConnectedRouter>
-      </>
+      </div>
     );
   }
 }

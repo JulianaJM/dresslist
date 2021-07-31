@@ -10,8 +10,6 @@ import Modal from "../../Components/common/Modal/Modal";
 import Button from "../../Components/common/Button/Button";
 
 const Container = styled("div")`
-  overflow-y: scroll;
-  height: 90vh;
   ${mq({
     width: ["100%", "95%"],
     padding: ["30px 10px", "0"],
